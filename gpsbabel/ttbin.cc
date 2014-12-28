@@ -220,6 +220,19 @@ ttbin_read_lap(void)
   (void) gbfgetuint16(file_in);
 }
 
+/* Tag 0x3f */
+static void
+ttbin_read_heartrate_recovery(void)
+{
+  // recovery score
+  // 4 => Excellent
+  // 3 => Good
+  uint32_t score = gbfgetuint32(file_in);
+
+  // decrease in heart rate during recovery period
+  uint32_t heart_rate_decrease = gbfgetuint32(file_in);
+}
+
 static void
 ttbin_skip_unknown(uint8_t tag)
 {
@@ -275,6 +288,9 @@ ttbin_read(void)
       case 0x2f:
         ttbin_read_lap();
         break;
+      case 0x3f:
+        ttbin_read_heartrate_recovery();
+        break;
       case 0x27:
         //ttbin_read_summary();
         //break;
@@ -298,7 +314,6 @@ ttbin_read(void)
       case 0x3c:
       case 0x3d:
       case 0x3e:
-      case 0x3f:
       default:
         ttbin_skip_unknown(tag);
     }
