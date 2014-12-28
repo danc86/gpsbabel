@@ -115,6 +115,7 @@ extern ff_vecs_t text_vecs;
 extern ff_vecs_t tiger_vecs;
 extern ff_vecs_t tmpro_vecs;
 extern ff_vecs_t tomtom_vecs;
+extern ff_vecs_t ttbin_vecs;
 extern ff_vecs_t tpg_vecs;
 extern ff_vecs_t tpo2_vecs;
 extern ff_vecs_t tpo3_vecs;
@@ -553,6 +554,13 @@ vecs_t vec_list[] = {
     "tomtom",
     "TomTom POI file (.ov2)",
     "ov2",
+    NULL,
+  },
+  {
+    &ttbin_vecs,
+    "ttbin",
+    "TomTom GPS watch tracks (.ttbin)",
+    "ttbin",
     NULL,
   },
   {
